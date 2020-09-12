@@ -105,7 +105,7 @@ bool turnR = FALSE;
 bool stopRobot = FALSE;
 bool online = FALSE;
 
-int lineL, lineR; //, allGS;
+int lineL, lineR;
 
 short gs_new[NB_GROUND_SENS] = {0, 0, 0};
 // Test array
@@ -135,7 +135,6 @@ void ReadGroudSensors(void){
 //    if(gs_value[i]>maxGS[i]) maxGS[i]=gs_value[i];
     
     // linear Interpolation
-//    gs_new[i] = (gs_value[i]-MIN_GS)/(MAX_GS-MIN_GS)*-NEW_GS+NEW_GS;
     gs_new[i] = ((float)gs_value[i]-MIN_GS)/(MAX_GS-MIN_GS)*-NEW_GS+NEW_GS;
 
     // Limited values between 0 and 1000 (NEW_GS)
@@ -159,7 +158,6 @@ void ReadGroudSensors(void){
   
 //  printf("%4d   %4d   %4d   %4d   %5d   OnLine: %d \n", gs_new[0], gs_new[1], gs_new[2], (int)Position, (int)ErrorPosition, online);
 //  printf("GS: %4d %4d %4d;   Max: %4d %4d %4d;   Min: %4d %4d %4d  \n", gs_value[0], gs_value[1], gs_value[2], maxGS[0], maxGS[1], maxGS[2], minGS[0], minGS[1], minGS[2]);
-
 }
 
 
@@ -245,13 +243,17 @@ int main() {
 
     // *** START OF SUBSUMPTION ARCHITECTURE ***
 
-    // LFM - Line Following Module
     if(ontrack){
+      // LFM - Line Following Module
       LineFollowingModule();
       speed[LEFT] = lfm_speed[LEFT];
       speed[RIGHT] = lfm_speed[RIGHT];
+      // Routines used when detecting the line
       if(online){
+        // If the center sensor detects the line
         if(ErrorPosition>-5 && ErrorPosition<5){
+          // If the number of times the left sensor detects the line is between 3 and 8,
+          // it activates force crossing and deactivates the line detection routine
           if(lineL>2 && lineL<9){
             turnL = TRUE;
             ontrack = FALSE;
@@ -262,10 +264,13 @@ int main() {
           lineL = 0;
           lineR = 0;
         }
-        else if(ErrorPosition<-(-OL_GS))lineL++;
-        else if(ErrorPosition>(OL_GS))lineR++;
+//      Counts how many times the line is detected with the left sensor        
+        else if(ErrorPosition<-OL_GS)lineL++;
+//      Counts how many times the line is detected with the right sensor  
+        else if(ErrorPosition>OL_GS)lineR++;
       }
-      else{  //Breaks
+//    Routine braking and recovery when losing the line
+      else{
         if(ErrorPosition == -NEW_GS){
           speed[LEFT] = -200;
           speed[RIGHT] = 200;
@@ -276,6 +281,7 @@ int main() {
         }
       }
     }
+//  Crossover routine used for bifurcation
     else{
       if(turnL && !stopRobot){
         if(ErrorPosition < NEW_GS){
@@ -288,6 +294,8 @@ int main() {
         }
       }
     }
+
+//  When detecting the green color with the three gs sensors, the robot stops (Goal!!!)
     if(gs_new[1]>(GOAL-10) && gs_new[1]<(GOAL+10)){
       if(gs_new[0]>(GOAL-10) && gs_new[0]<(GOAL+10)){
         if(gs_new[2]>(GOAL-10) && gs_new[2]<(GOAL+10)){
@@ -299,11 +307,13 @@ int main() {
 
 //    printf("%4d   %4d   %4d   %5d   OnLine: %d   LineL: %2d   LineR: %2d   Left: %d   Right: %d  \n", gs_new[0], gs_new[1], gs_new[2], (int)ErrorPosition, online, lineL, lineR, turnL, turnR);
 
+//  When it is detecting an obstacle. PSA is a detected light intensity
     if(ps_value[7] > PS_A || ps_value[0] > PS_A){
       avoiding = TRUE;
       ontrack = FALSE;
     }
 
+//  The robot rotates until the ps5 sensor detects the object
     if(avoiding){
       if(ps_value[5] < (PS_A-20)){
         speed[LEFT] = 200;
@@ -314,7 +324,8 @@ int main() {
         around = TRUE;
       }
     }
-    
+
+//  The robot circles the object until it detects the line again.    
     if(around){
       if(ps_value[5] < (PS_A-20) && ps_value[6] < PS_B){
         speed[LEFT] = -200;
@@ -329,7 +340,8 @@ int main() {
         recovery = TRUE;
       }
     }   
-     
+
+//  The robot rotates until the ps5 sensor stops detecting the obstacle     
     if(recovery){
       if(ps_value[5] > PS_C){
         speed[LEFT] = 200;
@@ -341,6 +353,7 @@ int main() {
       }
     }
 
+//  Debug Console Print
     if(stopRobot) printf("Goal!!!  \n");
     else printf("Ontrack: %d   Avoiding: %d   Around: %d   Recovey: %d   \n", !(avoiding || around || recovery), avoiding, around, recovery);
 
