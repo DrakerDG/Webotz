@@ -16,8 +16,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.03900416218189392 0.22060102508198587 0.9745839435704169 0.35893526708668255
-  position -0.30250817716029654 2.0995371777858054 1.512732167406289
+  orientation -0.07176482914579597 0.25930521940717904 0.9631254396421421 0.5596302887425936
+  position -0.49447606238488095 1.7845331123699548 1.833585358689744
 }
 DEF classroom Group {
   children [
@@ -311,6 +311,108 @@ DEF classroom Group {
           ]
           name "electric(2)"
         }
+        Solid {
+          translation 4.8 4.5 0.4
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Transform {
+              scale 0.01 0.01 0.01
+              children [
+                CadShape {
+                  url [
+                    "obj/Electric plug/Electric plug.obj"
+                  ]
+                }
+              ]
+            }
+          ]
+          name "electric(3)"
+        }
+        Solid {
+          translation 4.8 2.5 0.4
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Transform {
+              scale 0.01 0.01 0.01
+              children [
+                CadShape {
+                  url [
+                    "obj/Electric plug/Electric plug.obj"
+                  ]
+                }
+              ]
+            }
+          ]
+          name "electric(4)"
+        }
+        Solid {
+          translation 4.8 0.5 0.4
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Transform {
+              scale 0.01 0.01 0.01
+              children [
+                CadShape {
+                  url [
+                    "obj/Electric plug/Electric plug.obj"
+                  ]
+                }
+              ]
+            }
+          ]
+          name "electric(5)"
+        }
+        Solid {
+          translation 4.8 -1.5 0.4
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Transform {
+              scale 0.01 0.01 0.01
+              children [
+                CadShape {
+                  url [
+                    "obj/Electric plug/Electric plug.obj"
+                  ]
+                }
+              ]
+            }
+          ]
+          name "electric(6)"
+        }
+        Solid {
+          translation 4.8 -3.5 0.4
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Transform {
+              scale 0.01 0.01 0.01
+              children [
+                CadShape {
+                  url [
+                    "obj/Electric plug/Electric plug.obj"
+                  ]
+                }
+              ]
+            }
+          ]
+          name "electric(7)"
+        }
+        Solid {
+          translation 4.8 -5.5 0.4
+          rotation 0 0 1 -1.5707953071795862
+          children [
+            Transform {
+              scale 0.01 0.01 0.01
+              children [
+                CadShape {
+                  url [
+                    "obj/Electric plug/Electric plug.obj"
+                  ]
+                }
+              ]
+            }
+          ]
+          name "electric(8)"
+        }
       ]
     }
     DEF furniture Group {
@@ -464,6 +566,14 @@ DEF classroom Group {
           rotation 0 0 1 -1.5707953071795862
           textureUrl [
             "textures/Mini Sumo Robot V1_11.jpg"
+          ]
+        }
+        LandscapePainting {
+          translation -4.78 5.91 1.7
+          rotation 0 0 1 1.01503e-06
+          name "landscape painting(1)"
+          textureUrl [
+            "textures/DigiArm V3.jpg"
           ]
         }
         Table {
