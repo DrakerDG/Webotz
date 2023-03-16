@@ -14,6 +14,10 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/plants/protos/PottedTree.proto"
 
 WorldInfo {
+  info [
+    "Basic arm V2 controlled by keyboard and mouse"
+  ]
+  title "Basic Arm V2"
   basicTimeStep 16
   contactProperties [
     ContactProperties {
