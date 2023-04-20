@@ -1,4 +1,4 @@
-"""little_bicycle_P_V2 controller."""
+"""little_bicycle_P_V2.1 controller."""
 
 import cv2
 import numpy as np
@@ -56,7 +56,6 @@ display.setFont('Verdana', 16, True)
 
 if preview == 1:
     cv2.startWindowThread()
-    cv2.namedWindow("preview")
 
 def getError(act_error):
     error_P = act_error
@@ -102,22 +101,18 @@ def getError(act_error):
             return error_P
         else:
             try:
-                largest_contour_center = cv2.moments(largest_contour)
+                x,y,w,h = cv2.boundingRect(largest_contour)
+                center_x = int(x + w / 2)
+                display.setAlpha(0.0)
+                display.fillRectangle(0, 0, display.width, display.height)
+                display.setAlpha(1.0)
+                display.drawLine(center_x - 20, ySet, center_x + 20, ySet)
+                display.drawLine(center_x, ySet - 20, center_x, ySet + 20)
+                display.fillOval(center_x, ySet, 3, 3)
             except:
                 return error_P
             else:
-                try:
-                    center_x = int(largest_contour_center['m10'] / largest_contour_center['m00'])
-                    display.setAlpha(0.0)
-                    display.fillRectangle(0, 0, display.width, display.height)
-                    display.setAlpha(1.0)
-                    display.drawLine(center_x - 20, ySet, center_x + 20, ySet)
-                    display.drawLine(center_x, ySet - 20, center_x, ySet + 20)
-                    display.fillOval(center_x, ySet, 3, 3)
-                except:
-                    return error_P
-                else:
-                    return xSet - center_x 
+                return xSet - center_x 
 
 def keyCtrl():
     # Get pressed key
@@ -136,7 +131,39 @@ def keyCtrl():
     # Set position handlebar
     hndmotor.setPosition(hndB)
 
+# hour:minutes:seconds
+def hms(sec):
+    h = sec // 3600
+    m = sec % 3600 // 60
+    s = sec % 3600 % 60
+    tm = f'{h:02d}:{m:02d}:{s:02d}'
+    return tm
 
+
+def printStatus():
+    global maxV
+    # Get Velocity
+    velo = robotNode.getVelocity()
+    
+    # Velocity calulation:  Speed Module (x, y, z)
+    velocity = (velo[0]**2 + velo[1]**2 + velo[2]**2)**0.5
+    velocity = velocity * 3.6 # km/h
+    
+    if velocity > maxV:
+        maxV = (velocity + maxV) / 2
+
+    timer = int(robot.getTime())
+    strP = hms(timer)
+    
+    if robot.getName() == 'Little Bicycle 1':
+        vpos = 0.93
+        strP = f'Time: {strP:s}'
+        robot.setLabel(0, strP, 0, 0.97, 0.06, 0x000000, 0, 'Lucida Console')
+    elif robot.getName() == 'Little Bicycle 2':
+        vpos = 0.89
+    strP = f'Robot: {robot.getName():s}   Speed: {velocity:5.2f} km/h   Max {maxV:5.2f} km/h'
+    robot.setLabel(1, strP, 0, vpos, 0.06, 0x000000, 0, 'Lucida Console')
+        
 # Main loop:
 while robot.step(timestep) != -1:
 
@@ -160,23 +187,6 @@ while robot.step(timestep) != -1:
     hndmotor.setPosition(hndB)
     whemotor.setVelocity(bcyS)
 
-    timer = robot.getTime()
-    # Get Velocity
-    velo = robotNode.getVelocity()
-
-    # Velocity calulation:  Speed Module (x, y, z)
-    velocity = (velo[0]**2 + velo[1]**2 + velo[2]**2)**0.5
+    printStatus()
     
-    if velocity > maxV:
-        maxV = (velocity + maxV) / 2
-        
-    strP = f'Robot: {robot.getName():s}'
-    robot.setLabel(0, strP, 0, 0.91, 0.06, 0x000000, 0, 'Lucida Console')
-    
-    strP = f'Speed: {velocity:5.2f} m/s  Max {maxV:5.2f} m/s   Time: {timer: 8.2f} seg'
-    robot.setLabel(1, strP, 0, 0.94, 0.06, 0x000000, 0, 'Lucida Console')
-
-    strP = f'P: {Kp * P:7.2F}   I: {Ki * I:6.2f}   D: {Kd * D:6.2f}   PID: {PID:7.2F}'
-    robot.setLabel(2, strP, 0, 0.97, 0.06, 0x000000, 0, 'Lucida Console')
-
     pass
