@@ -1,0 +1,412 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/CardboardBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/PlasticCrate.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/pallet/protos/WoodenPalletStack.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/obstacles/protos/OilBarrel.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/street_furniture/protos/TrashContainer.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/traffic/protos/TrafficCone.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Rubber.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    DEF MecR ContactProperties {
+      material1 "MecR"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+      softCFM 0.0001
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+    DEF MecL ContactProperties {
+      material1 "MecL"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+      softCFM 0.0001
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+    ContactProperties {
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.15861639468519922 0.06221504290592399 -0.9853781648551398 2.403944541188109
+  position 0.6883827389899131 0.6291683778115696 0.35240370384964653
+  follow "Meka_R"
+  followSmoothness 0.05
+}
+TexturedBackground {
+  texture "factory"
+}
+TexturedBackgroundLight {
+  texture "factory"
+}
+Floor {
+  size 100 100
+  tileSize 0.6 0.6
+  appearance Rubber {
+    type "dotted"
+    IBLStrength 0.1
+  }
+}
+DEF lights Group {
+  children [
+    PointLight {
+      attenuation 0 0 1
+      intensity 7
+      location 3 3 3
+      castShadows TRUE
+    }
+    PointLight {
+      attenuation 0 0 1
+      intensity 7
+      location -3 3 3
+      castShadows TRUE
+    }
+    PointLight {
+      attenuation 0 0 1
+      intensity 7
+      location -3 -3 3
+      castShadows TRUE
+    }
+    PointLight {
+      attenuation 0 0 1
+      intensity 7
+      location 3 -3 3
+      castShadows TRUE
+    }
+  ]
+}
+DEF stuffs Group {
+  children [
+    CardboardBox {
+      translation 0 -10.78 0.3
+    }
+    CardboardBox {
+      translation -0.65 -10.78 0.3
+      name "cardboard box(1)"
+    }
+    CardboardBox {
+      translation -1.52 -10.78 0.3
+      name "cardboard box(2)"
+    }
+    PlasticCrate {
+      translation -7.23 -6.32 0
+      color 0.101961 0.372549 0.705882
+    }
+    PlasticCrate {
+      translation -7.23 -5.59 0
+      name "plastic crate(1)"
+      color 0.101961 0.372549 0.705882
+    }
+    WoodenPalletStack {
+      translation -6.09 0 0
+    }
+    WoodenPalletStack {
+      translation -6.09 1.01 0
+      name "wooden pallet stack(1)"
+    }
+    OilBarrel {
+      translation 0 5.74 0.44
+    }
+    OilBarrel {
+      translation 1.02 5.74 0.44
+      name "oil barrel(1)"
+    }
+    OilBarrel {
+      translation 0.72 6.44 0.44
+      name "oil barrel(2)"
+    }
+    TrashContainer {
+      translation 9.56 4.36999 0
+      rotation 0 0 1 3.14159
+    }
+    TrafficCone {
+      translation 7.2 -3.84 0
+    }
+    TrafficCone {
+      translation 7.2 -5.47 0
+      name "traffic cone(1)"
+    }
+    TrafficCone {
+      translation 7.2 -7.61 0
+      name "traffic cone(2)"
+    }
+  ]
+}
+Robot {
+  children [
+    CadShape {
+      url [
+        "obj/meka/body/body.obj"
+      ]
+    }
+    DEF wheels Group {
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor 0.12 0.12 0.05
+          }
+          device [
+            RotationalMotor {
+              name "motor0"
+              maxVelocity 30
+              maxTorque 100
+            }
+          ]
+          endPoint Solid {
+            translation 0.12 0.12 0.05
+            rotation 0 1 0 0
+            children [
+              CadShape {
+                url [
+                  "obj/meka/meca_L/meka_L.obj"
+                ]
+              }
+            ]
+            name "w0"
+            contactMaterial "MecL"
+            boundingObject Pose {
+              rotation 1 0 0 1.5708
+              children [
+                Shape {
+                  geometry Cylinder {
+                    height 0.05
+                    radius 0.05
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor 0.12 -0.12 0.05
+          }
+          device [
+            RotationalMotor {
+              name "motor1"
+              maxVelocity 30
+              maxTorque 100
+            }
+          ]
+          endPoint Solid {
+            translation 0.12 -0.12 0.05
+            rotation 0 1 0 0
+            children [
+              CadShape {
+                url [
+                  "obj/meka/meca_R/meka_R.obj"
+                ]
+              }
+            ]
+            name "w1"
+            contactMaterial "MecR"
+            boundingObject Pose {
+              rotation 1 0 0 1.5708
+              children [
+                Shape {
+                  geometry Cylinder {
+                    height 0.05
+                    radius 0.05
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor -0.12 0.12 0.05
+          }
+          device [
+            RotationalMotor {
+              name "motor2"
+              maxVelocity 30
+              maxTorque 100
+            }
+          ]
+          endPoint Solid {
+            translation -0.12 0.12 0.05
+            rotation 0 1 0 0
+            children [
+              CadShape {
+                url [
+                  "obj/meka/meca_R/meka_R.obj"
+                ]
+              }
+            ]
+            name "w2"
+            contactMaterial "MecR"
+            boundingObject Pose {
+              rotation 1 0 0 1.5708
+              children [
+                Shape {
+                  geometry Cylinder {
+                    height 0.05
+                    radius 0.05
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 1 0
+            anchor -0.12 -0.12 0.05
+          }
+          device [
+            RotationalMotor {
+              name "motor3"
+              maxVelocity 30
+              maxTorque 100
+            }
+          ]
+          endPoint Solid {
+            translation -0.12 -0.12 0.05
+            rotation 0 1 0 0
+            children [
+              CadShape {
+                url [
+                  "obj/meka/meca_L/meka_L.obj"
+                ]
+              }
+            ]
+            name "w3"
+            contactMaterial "MecL"
+            boundingObject Pose {
+              rotation 1 0 0 1.5708
+              children [
+                Shape {
+                  geometry Cylinder {
+                    height 0.05
+                    radius 0.05
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+      ]
+    }
+    DEF LEDs Group {
+      children [
+        LED {
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0.266667 0.2 0.0392157
+                }
+              }
+              geometry Mesh {
+                url [
+                  "obj/meka/lights/lights.obj"
+                ]
+              }
+            }
+          ]
+          name "led0"
+          color [
+            0.976471 0.941176 0.419608
+          ]
+        }
+        LED {
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0.243336 0.121813 0.059205
+                }
+              }
+              geometry Mesh {
+                url [
+                  "obj/meka/lights/brakes.obj"
+                ]
+              }
+            }
+          ]
+          name "led1"
+          color [
+            1 0.470588 0
+          ]
+        }
+      ]
+    }
+    Camera {
+      translation 0.14 0 0.2
+      fieldOfView 1
+      width 300
+      height 200
+      antiAliasing TRUE
+    }
+  ]
+  name "Meka_R"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 0 0 0.133
+        children [
+          Shape {
+            geometry Box {
+              size 0.4 0.26 0.02
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 0 0 0.078
+        children [
+          Shape {
+            geometry Box {
+              size 0.36 0.18 0.094
+            }
+          }
+        ]
+      }
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 2.9
+    centerOfMass [
+      0 0 -0.1
+    ]
+  }
+  controller "meka_ctrl"
+  supervisor TRUE
+}
