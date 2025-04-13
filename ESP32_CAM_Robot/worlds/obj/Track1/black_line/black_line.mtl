@@ -1,0 +1,12 @@
+# Blender 4.1.1 MTL File: 'Track1.blend'
+# www.blender.org
+
+newmtl color_2829873.003
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/drakerdg/Documents/OneDrive/Documents/Webots/Arduino_Alvik/worlds/textures/black.jpg

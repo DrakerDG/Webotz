@@ -1,0 +1,1644 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/PlasticCrate.proto"
+
+WorldInfo {
+  ERP 0.6
+  basicTimeStep 8
+  FPS 30
+  contactProperties [
+    ContactProperties {
+      material1 "wheels"
+      coulombFriction [
+        3
+      ]
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+    ContactProperties {
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+  ]
+}
+Viewpoint {
+  fieldOfView 1.2
+  orientation -0.13973413032005993 -0.05413234408669171 0.9887082795988797 3.873181109824893
+  position 0.6291393951128126 0.7123316212143284 1.050439079909455
+  near 0.005
+  follow "ESP32-CAM Robot"
+  followSmoothness 0.001
+}
+TexturedBackground {
+  luminosity 0.5
+  skybox FALSE
+}
+Solid {
+  children [
+    Floor {
+      size 34 40
+      tileSize 3 3
+      appearance PBRAppearance {
+        baseColor 0.664805 0.782315 0.923339
+        baseColorMap ImageTexture {
+          url [
+            "obj/Stuffs/Sports Center V1/laminate_floor/laminate_floor.jpg"
+          ]
+        }
+        roughnessMap ImageTexture {
+          url [
+            "obj/Stuffs/Sports Center V1/laminate_floor/laminate_floor_roughness.jpg"
+          ]
+        }
+        metalness 0
+        normalMap ImageTexture {
+          url [
+            "obj/Stuffs/Sports Center V1/laminate_floor/laminate_floor_normal.jpg"
+          ]
+        }
+        occlusionMap ImageTexture {
+          url [
+            "obj/Stuffs/Sports Center V1/laminate_floor/laminate_floor_roughness.jpg"
+          ]
+        }
+      }
+    }
+    CadShape {
+      url [
+        "obj/Stuffs/Sports Center V1/SC.obj"
+      ]
+    }
+    DEF drawings Group {
+      children [
+        Pose {
+          translation -16.57 -14.78 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/drawings/Drawing06.jpg"
+                  ]
+                }
+                metalness 0
+              }
+              geometry Box {
+                size 0.02 3.91 1.91
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -16.57 -4.93 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/drawings/webots.jpg"
+                  ]
+                }
+                metalness 0
+              }
+              geometry Box {
+                size 0.02 3.91 1.91
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -16.57 4.93 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/drawings/Drawing01.jpg"
+                  ]
+                }
+                metalness 0
+              }
+              geometry Box {
+                size 0.02 3.91 1.91
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -16.57 14.78 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/drawings/Drawing04.jpg"
+                  ]
+                }
+                metalness 0
+              }
+              geometry Box {
+                size 0.02 3.91 1.91
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 16.57 14.78 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/drawings/Drawing02.jpg"
+                  ]
+                }
+                metalness 0
+              }
+              geometry Box {
+                size 0.02 3.91 1.91
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 16.57 4.93 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/drawings/webots.jpg"
+                  ]
+                }
+                metalness 0
+              }
+              geometry Box {
+                size 0.02 3.91 1.91
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 16.57 -4.93 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/drawings/Drawing03.jpg"
+                  ]
+                }
+                metalness 0
+              }
+              geometry Box {
+                size 0.02 3.91 1.91
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 16.57 -14.78 2
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/drawings/Drawing05.jpg"
+                  ]
+                }
+                metalness 0
+              }
+              geometry Box {
+                size 0.02 3.91 1.91
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 8.35 -19.535 4.17
+          rotation -3.3905013482585576e-09 0.7071072811865696 -0.7071062811861719 3.14159
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 1
+                  emissiveColor 0.752941 0.74902 0.737255
+                }
+                texture ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/drawings/clock.jpg"
+                  ]
+                }
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.37
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 8.35 19.535 4.17
+          rotation 1 0 0 -1.5707953071795862
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 1
+                  emissiveColor 0.752941 0.74902 0.737255
+                }
+                texture ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/drawings/clock.jpg"
+                  ]
+                }
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.37
+              }
+            }
+          ]
+        }
+      ]
+    }
+    DEF boxes Group {
+      children [
+        Solid {
+          translation 14.5 19.2 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/Boxes/cardboard_color.jpg"
+                  ]
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/Boxes/cardboard_roughness.jpg"
+                  ]
+                }
+                metalness 0
+                normalMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/Boxes/cardboard_normal.jpg"
+                  ]
+                }
+                occlusionMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/Boxes/cardboard_occlusion.jpg"
+                  ]
+                }
+              }
+              geometry Mesh {
+                url [
+                  "obj/Stuffs/Sports Center V1/Boxes/boxes1.obj"
+                ]
+              }
+            }
+          ]
+          name "boxes1"
+          boundingObject Group {
+            children [
+              Pose {
+                translation 0 0 0.6
+                children [
+                  Shape {
+                    geometry Box {
+                      size 3.6 0.6 1.2
+                    }
+                  }
+                ]
+              }
+              Pose {
+                translation 0.9 0 1.5
+                children [
+                  Shape {
+                    geometry Box {
+                      size 1.8 0.6 0.6
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+        Solid {
+          translation -14.5 19.2 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/Boxes/cardboard_color.jpg"
+                  ]
+                }
+                roughnessMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/Boxes/cardboard_roughness.jpg"
+                  ]
+                }
+                metalness 0
+                normalMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/Boxes/cardboard_normal.jpg"
+                  ]
+                }
+                occlusionMap ImageTexture {
+                  url [
+                    "obj/Stuffs/Sports Center V1/Boxes/cardboard_occlusion.jpg"
+                  ]
+                }
+              }
+              geometry Mesh {
+                url [
+                  "obj/Stuffs/Sports Center V1/Boxes/boxes2.obj"
+                ]
+              }
+            }
+          ]
+          name "boxes2"
+          boundingObject Group {
+            children [
+              Pose {
+                translation 0 0 0.6
+                children [
+                  Shape {
+                    geometry Box {
+                      size 3.6 0.6 1.2
+                    }
+                  }
+                ]
+              }
+              Pose {
+                translation -0.9 0 1.5
+                children [
+                  Shape {
+                    geometry Box {
+                      size 1.8 0.6 0.6
+                    }
+                  }
+                ]
+              }
+              Pose {
+                translation -0.9 0 2.1
+                children [
+                  Shape {
+                    geometry Box {
+                      size 0.6 0.6 0.6
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+        PlasticCrate {
+          translation -13.5 -19.3 0.51
+          size 0.5 0.5 0.4
+          color 0.368627 0.360784 0.392157
+        }
+        PlasticCrate {
+          translation -14.18 -19.3 0.51
+          name "plastic crate(1)"
+          size 0.5 0.5 0.4
+          color 0.368627 0.360784 0.392157
+        }
+        PlasticCrate {
+          translation -15.63 -19.3 1.01
+          name "plastic crate(2)"
+          size 0.5 0.5 0.4
+          color 0.368627 0.360784 0.392157
+        }
+        PlasticCrate {
+          translation 13.55 -19.3 1.01
+          name "plastic crate(3)"
+          size 0.5 0.5 0.4
+          color 0.368627 0.360784 0.392157
+        }
+        PlasticCrate {
+          translation 15.52 -19.3 0.51
+          name "plastic crate(4)"
+          size 0.5 0.5 0.4
+          color 0.368627 0.360784 0.392157
+        }
+        PlasticCrate {
+          translation 15.53 -19.3 1.51
+          name "plastic crate(5)"
+          size 0.5 0.5 0.4
+          color 0.368627 0.360784 0.392157
+        }
+      ]
+    }
+    DEF lights Group {
+      children [
+        PointLight {
+          attenuation 0 0 1
+          intensity 15
+          location 5 6 6
+          castShadows TRUE
+        }
+        PointLight {
+          attenuation 0 0 1
+          intensity 15
+          location 5 -6 6
+          castShadows TRUE
+        }
+        PointLight {
+          attenuation 0 0 1
+          intensity 15
+          location -5 -6 6
+          castShadows TRUE
+        }
+        PointLight {
+          attenuation 0 0 1
+          intensity 15
+          location -5 6 6
+          castShadows TRUE
+        }
+      ]
+    }
+  ]
+  name "sport center"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 16.8 0 4
+        children [
+          Shape {
+            geometry Box {
+              size 0.4 40 8
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -16.8 0 4
+        children [
+          Shape {
+            geometry Box {
+              size 0.4 40 8
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 0 19.8 4
+        children [
+          Shape {
+            geometry Box {
+              size 34 0.4 8
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 0 -19.8 4
+        children [
+          Shape {
+            geometry Box {
+              size 34 0.4 8
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 16.7 0 5
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 10
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 16.7 9.85 5
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 10
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 16.7 19.7 5
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 10
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 16.7 -9.85 5
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 10
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 16.7 -19.7 5
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 10
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -16.7 0 5
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 10
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -16.7 9.85 5
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 10
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -16.7 19.7 5
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 10
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -16.7 -9.85 5
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 10
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -16.7 -19.7 5
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 10
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 0 -19.7 6
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 12
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 0 19.7 6
+        children [
+          Shape {
+            geometry Box {
+              size 0.6 0.6 12
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 13.075 -19.27 1
+        children [
+          Shape {
+            geometry Box {
+              size 0.01 0.6 2
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 16.065 -19.27 1
+        children [
+          Shape {
+            geometry Box {
+              size 0.01 0.6 2
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 14.57 -19.27 0.51
+        children [
+          Shape {
+            geometry Box {
+              size 3 0.6 0.01
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 14.57 -19.27 1.01
+        children [
+          Shape {
+            geometry Box {
+              size 3 0.6 0.01
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 14.57 -19.27 1.51
+        children [
+          Shape {
+            geometry Box {
+              size 3 0.6 0.01
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 14.57 -19.27 2.01
+        children [
+          Shape {
+            geometry Box {
+              size 3 0.6 0.01
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -13.075 -19.27 1
+        children [
+          Shape {
+            geometry Box {
+              size 0.01 0.6 2
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -16.065 -19.27 1
+        children [
+          Shape {
+            geometry Box {
+              size 0.01 0.6 2
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -14.57 -19.27 0.51
+        children [
+          Shape {
+            geometry Box {
+              size 3 0.6 0.01
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -14.57 -19.27 1.01
+        children [
+          Shape {
+            geometry Box {
+              size 3 0.6 0.01
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -14.57 -19.27 1.51
+        children [
+          Shape {
+            geometry Box {
+              size 3 0.6 0.01
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -14.57 -19.27 2.01
+        children [
+          Shape {
+            geometry Box {
+              size 3 0.6 0.01
+            }
+          }
+        ]
+      }
+    ]
+  }
+  locked TRUE
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "obj/Track1/white.jpg"
+          ]
+        }
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "obj/Track1/white_base/white_base.obj"
+        ]
+      }
+    }
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "obj/Track1/black.jpg"
+          ]
+        }
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "obj/Track1/black_line/black_line.obj"
+        ]
+      }
+    }
+    CadShape {
+      url [
+        "obj/Track1/wall/wall.obj"
+      ]
+    }
+  ]
+  name "track1"
+  boundingObject Group {
+    children [
+      Mesh {
+        url [
+          "obj/Track1/wall/wall.obj"
+        ]
+        name "wall"
+      }
+      Pose {
+        translation 0 0 0.7
+        children [
+          Shape {
+            geometry Box {
+              size 6 6 0.08
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 0 0 0.91
+        children [
+          Shape {
+            geometry Box {
+              size 0.7 0.3 0.02
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 1.15 0 0.82
+        rotation 0 1 0 0.112028962425988
+        children [
+          Shape {
+            geometry Box {
+              size 1.61 0.3 0.02
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -1.15 0 0.82
+        rotation 0 1 0 -0.112029
+        children [
+          Shape {
+            geometry Box {
+              size 1.61 0.3 0.02
+            }
+          }
+        ]
+      }
+    ]
+  }
+  locked TRUE
+}
+Robot {
+  translation 0 0.15 0.74
+  rotation 0 0 0.9999999999999999 1.5707953071795862
+  children [
+    DEF body Group {
+      children [
+        CadShape {
+          url [
+            "obj/ESP32-CAM-R/body/body.obj"
+          ]
+        }
+      ]
+    }
+    DEF motors Group {
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor 0.06 0.045 0.022
+          }
+          endPoint Solid {
+            translation 0.06 0.045 0.022
+            children [
+              CadShape {
+                url [
+                  "obj/ESP32-CAM-R/motors/motor_L.obj"
+                ]
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  axis 0 1 0
+                  anchor 0 0.015 0
+                }
+                device [
+                  RotationalMotor {
+                    name "wheel2"
+                    maxVelocity 500
+                    sound ""
+                  }
+                ]
+                endPoint Solid {
+                  translation 0 0.015 0
+                  rotation 0 1 0 0
+                  children [
+                    CadShape {
+                      url [
+                        "obj/ESP32-CAM-R/wheels/wheel_L.obj"
+                      ]
+                    }
+                  ]
+                  name "wheel0"
+                  contactMaterial "wheels"
+                  boundingObject Pose {
+                    rotation 1 0 0 -1.5707953071795862
+                    children [
+                      Shape {
+                        geometry Cylinder {
+                          height 0.018
+                          radius 0.022
+                        }
+                      }
+                    ]
+                  }
+                  physics Physics {
+                  }
+                }
+              }
+            ]
+            name "F_Left"
+            boundingObject Pose {
+              translation 0 -0.003 0
+              children [
+                Shape {
+                  geometry Box {
+                    size 0.016 0.016 0.016
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor 0.06 -0.045 0.022
+          }
+          endPoint Solid {
+            translation 0.06 -0.045 0.022
+            children [
+              CadShape {
+                url [
+                  "obj/ESP32-CAM-R/motors/motor_R.obj"
+                ]
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  axis 0 1 0
+                  anchor 0 -0.015 0
+                }
+                device [
+                  RotationalMotor {
+                    name "wheel0"
+                    maxVelocity 500
+                    sound ""
+                  }
+                ]
+                endPoint Solid {
+                  translation 0 -0.015 0
+                  rotation 0 1 0 0
+                  children [
+                    CadShape {
+                      url [
+                        "obj/ESP32-CAM-R/wheels/wheel_R.obj"
+                      ]
+                    }
+                  ]
+                  name "wheel1"
+                  contactMaterial "wheels"
+                  boundingObject Pose {
+                    rotation 1 0 0 -1.5707953071795862
+                    children [
+                      Shape {
+                        geometry Cylinder {
+                          height 0.018
+                          radius 0.022
+                        }
+                      }
+                    ]
+                  }
+                  physics Physics {
+                  }
+                }
+              }
+            ]
+            name "F_Right"
+            boundingObject Pose {
+              translation 0 0.003 0
+              children [
+                Shape {
+                  geometry Box {
+                    size 0.016 0.016 0.016
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor -0.06 0.045 0.022
+          }
+          endPoint Solid {
+            translation -0.06 0.045 0.022
+            children [
+              Pose {
+                rotation 0 0 1 3.14159
+                children [
+                  CadShape {
+                    url [
+                      "obj/ESP32-CAM-R/motors/motor_R.obj"
+                    ]
+                  }
+                ]
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  axis 0 1 0
+                  anchor 0 0.015 0
+                }
+                device [
+                  RotationalMotor {
+                    name "wheel3"
+                    maxVelocity 500
+                    sound ""
+                  }
+                ]
+                endPoint Solid {
+                  translation 0 0.015 0
+                  rotation 0 1 0 0
+                  children [
+                    CadShape {
+                      url [
+                        "obj/ESP32-CAM-R/wheels/wheel_L.obj"
+                      ]
+                    }
+                  ]
+                  name "wheel2"
+                  contactMaterial "wheels"
+                  boundingObject Pose {
+                    rotation 1 0 0 -1.5707953071795862
+                    children [
+                      Shape {
+                        geometry Cylinder {
+                          height 0.018
+                          radius 0.022
+                        }
+                      }
+                    ]
+                  }
+                  physics Physics {
+                  }
+                }
+              }
+            ]
+            name "B_Left"
+            boundingObject Pose {
+              translation 0 -0.003 0
+              children [
+                Shape {
+                  geometry Box {
+                    size 0.016 0.016 0.016
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor -0.06 -0.045 0.022
+          }
+          endPoint Solid {
+            translation -0.06 -0.045 0.022
+            children [
+              Pose {
+                rotation 0 0 1 3.14159
+                children [
+                  CadShape {
+                    url [
+                      "obj/ESP32-CAM-R/motors/motor_L.obj"
+                    ]
+                  }
+                ]
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  axis 0 1 0
+                  anchor 0 -0.015 0
+                }
+                device [
+                  RotationalMotor {
+                    name "wheel1"
+                    maxVelocity 500
+                    sound ""
+                  }
+                ]
+                endPoint Solid {
+                  translation 0 -0.015 0
+                  rotation 0 1 0 0
+                  children [
+                    CadShape {
+                      url [
+                        "obj/ESP32-CAM-R/wheels/wheel_R.obj"
+                      ]
+                    }
+                  ]
+                  name "wheel3"
+                  contactMaterial "wheels"
+                  boundingObject Pose {
+                    rotation 1 0 0 -1.5707953071795862
+                    children [
+                      Shape {
+                        geometry Cylinder {
+                          height 0.018
+                          radius 0.022
+                        }
+                      }
+                    ]
+                  }
+                  physics Physics {
+                  }
+                }
+              }
+            ]
+            name "B_Right"
+            boundingObject Pose {
+              translation 0 0.003 0
+              children [
+                Shape {
+                  geometry Box {
+                    size 0.016 0.016 0.016
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor 0.06 0 0.04
+          }
+          device [
+            RotationalMotor {
+              name "F_servo"
+              maxVelocity 100
+              maxTorque 100
+            }
+          ]
+          endPoint Solid {
+            translation 0.06 0 0.04
+            children [
+              CadShape {
+                url [
+                  "obj/ESP32-CAM-R/cam/base_cam.obj"
+                ]
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  axis 0 1 0
+                  anchor 0.0267 0 0.0357
+                }
+                device [
+                  RotationalMotor {
+                    name "cam_servo"
+                    maxVelocity 60
+                  }
+                ]
+                endPoint Solid {
+                  translation 0.0267 0 0.0357
+                  rotation 0 1 0 0
+                  children [
+                    CadShape {
+                      url [
+                        "obj/ESP32-CAM-R/cam/cam.obj"
+                      ]
+                    }
+                    Camera {
+                      translation 0.01 0 0
+                      fieldOfView 1.4
+                      width 200
+                      height 150
+                    }
+                    SpotLight {
+                      attenuation 0 0 1
+                      beamWidth 0.7
+                      cutOffAngle 1.1
+                      direction 1 0 0
+                      intensity 0.7
+                      location 0.008 0.0115 -0.0168
+                      radius 0.4
+                    }
+                  ]
+                  name "cam"
+                  boundingObject Pose {
+                    translation 0.003 0 -0.01
+                    children [
+                      Shape {
+                        geometry Box {
+                          size 0.001 0.027 0.04
+                        }
+                      }
+                    ]
+                  }
+                  physics Physics {
+                  }
+                }
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  axis 0 0 1
+                  anchor -0.027 0 -0.014
+                }
+                endPoint Solid {
+                  translation -0.027 0 -0.014
+                  children [
+                    CadShape {
+                      url [
+                        "obj/ESP32-CAM-R/bar/bar.obj"
+                      ]
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        axis 0 0 1
+                        anchor 0 0.035 0
+                      }
+                      endPoint SolidReference {
+                        solidName "F_Left"
+                      }
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        axis 0 0 1
+                        anchor 0 -0.035 0
+                      }
+                      endPoint SolidReference {
+                        solidName "F_Right"
+                      }
+                    }
+                  ]
+                  name "bar"
+                  boundingObject Pose {
+                    children [
+                      Shape {
+                        geometry Box {
+                          size 0.01 0.05 0.01
+                        }
+                      }
+                    ]
+                  }
+                  physics Physics {
+                  }
+                }
+              }
+            ]
+            name "base1"
+            boundingObject Group {
+              children [
+                Pose {
+                  translation 0 0 0.0015
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        height 0.003
+                        radius 0.03
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.011 0 0.0015
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        height 0.003
+                        radius 0.03
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.052 0 0.0515
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        height 0.088
+                        radius 0.0045
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.0267 0.0225 0.036
+                  rotation 1 0 0 -1.5707953071795862
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        height 0.003
+                        radius 0.015
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.0267 -0.0225 0.036
+                  rotation 1 0 0 -1.5707953071795862
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        height 0.003
+                        radius 0.015
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation -0.0216 0 0.013
+                  rotation 0 1 0 1.5708
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        height 0.003
+                        radius 0.01
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.0266 -0.0323 0.03
+                  children [
+                    Shape {
+                      geometry Box {
+                        size 0.0115 0.0205 0.0225
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor -0.06 0 0.04
+          }
+          device [
+            RotationalMotor {
+              name "B_servo"
+              maxVelocity 100
+              maxTorque 100
+            }
+          ]
+          endPoint Solid {
+            translation -0.06 0 0.04
+            children [
+              CadShape {
+                url [
+                  "obj/ESP32-CAM-R/bar/base.obj"
+                ]
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  axis 0 0 1
+                  anchor 0.027 0 -0.014
+                }
+                endPoint Solid {
+                  translation 0.027 0 -0.014
+                  children [
+                    CadShape {
+                      url [
+                        "obj/ESP32-CAM-R/bar/bar.obj"
+                      ]
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        axis 0 0 1
+                        anchor 0 0.035 0
+                      }
+                      endPoint SolidReference {
+                        solidName "B_Left"
+                      }
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        axis 0 0 1
+                        anchor 0 -0.035 0
+                      }
+                      endPoint SolidReference {
+                        solidName "B_Right"
+                      }
+                    }
+                  ]
+                  name "bar"
+                  boundingObject Pose {
+                    children [
+                      Shape {
+                        geometry Box {
+                          size 0.01 0.05 0.01
+                        }
+                      }
+                    ]
+                  }
+                  physics Physics {
+                  }
+                }
+              }
+            ]
+            name "base2"
+            boundingObject Group {
+              children [
+                Pose {
+                  translation 0 0 0.0015
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        height 0.003
+                        radius 0.01
+                      }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.0265 0 0.0015
+                  children [
+                    Shape {
+                      geometry Cylinder {
+                        height 0.003
+                        radius 0.005
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+      ]
+    }
+    DEF devices Group {
+      children [
+        DEF leds Group {
+          children [
+            LED {
+              translation -0.0961 0.02251 0.0528
+              children [
+                Group {
+                  children [
+                    SpotLight {
+                      attenuation 0 0 1
+                      beamWidth 1
+                      color 0 1 0
+                      cutOffAngle 1.5
+                      direction -1 0 0
+                      intensity 0.2
+                      location 0 0.00315 0
+                      on FALSE
+                      radius 0.001
+                    }
+                    SpotLight {
+                      attenuation 0 0 1
+                      beamWidth 1
+                      color 0 1 0
+                      cutOffAngle 1.3
+                      direction -1 0 0
+                      intensity 0.2
+                      location 0 -0.00315 0
+                      on FALSE
+                      radius 0.001
+                    }
+                  ]
+                }
+              ]
+              name "led0"
+              color [
+                0 1 0
+              ]
+            }
+            LED {
+              translation -0.0961 -0.02251 0.0528
+              children [
+                Group {
+                  children [
+                    SpotLight {
+                      attenuation 0 0 1
+                      beamWidth 1
+                      color 0 1 0
+                      cutOffAngle 1.3
+                      direction -1 0 0
+                      intensity 0.2
+                      location 0 0.00315 0
+                      on FALSE
+                      radius 0.001
+                    }
+                    SpotLight {
+                      attenuation 0 0 1
+                      beamWidth 1
+                      color 0 1 0
+                      cutOffAngle 1.3
+                      direction -1 0 0
+                      intensity 0.2
+                      location 0 -0.00315 0
+                      on FALSE
+                      radius 0.001
+                    }
+                  ]
+                }
+              ]
+              name "led1"
+              color [
+                0 1 0
+              ]
+            }
+          ]
+        }
+        Display {
+          width 200
+          height 150
+        }
+        Speaker {
+        }
+      ]
+    }
+  ]
+  name "ESP32-CAM Robot"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 0.0562 0 0.03175
+        children [
+          Shape {
+            geometry Box {
+              size 0.0725 0.06 0.003
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -0.0562 0 0.03175
+        children [
+          Shape {
+            geometry Box {
+              size 0.0725 0.06 0.003
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 0.0985 0 0.03175
+        children [
+          Shape {
+            geometry Box {
+              size 0.012 0.138 0.003
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -0.0985 0 0.03175
+        children [
+          Shape {
+            geometry Box {
+              size 0.012 0.138 0.003
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 0 0 0.024
+        children [
+          Shape {
+            geometry Box {
+              size 0.04 0.075 0.02
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 0 0 0.01225
+        children [
+          Shape {
+            geometry Box {
+              size 0.164 0.06 0.003
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -0.074 0 0.0505
+        children [
+          Shape {
+            geometry Box {
+              size 0.05 0.06 0.0015
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -0.0709 0 0.0629
+        children [
+          Shape {
+            geometry Box {
+              size 0.021 0.025 0.001
+            }
+          }
+        ]
+      }
+      Pose {
+        translation 0.0658 0 0.026
+        children [
+          Shape {
+            geometry Box {
+              size 0.0225 0.0112 0.0205
+            }
+          }
+        ]
+      }
+      Pose {
+        translation -0.0658 0 0.026
+        children [
+          Shape {
+            geometry Box {
+              size 0.0225 0.0112 0.0205
+            }
+          }
+        ]
+      }
+    ]
+  }
+  physics Physics {
+  }
+  controller "ESP32-CAM01"
+  supervisor TRUE
+}
