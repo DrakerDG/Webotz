@@ -74,11 +74,10 @@ Each component has a specific responsibility, allowing clean interaction between
   - Optimized speed control on subsequent runs
 
 World
-├── Environment (Sport Center, Furniture)
-├── Visualization (Follower_cam Robot)
-├── Timing & Events (Start_goal Robot)
-└── Autonomous Control (Lamborghino Robot)
-
+- Environment (Sport Center, Furniture)
+- Visualization (Follower_cam Robot)
+- Timing & Events (Start_goal Robot)
+- Autonomous Control (Lamborghino Robot)
 
 ---
 
@@ -115,13 +114,15 @@ Performance depends on simulation parameters and host machine capabilities.
 
 The controller is fully modular and split into multiple files:
 
-├── Lambo_FSM001.cpp    // State machine and orchestration (Main)
-├── Sensors.*           // Sensor handling & normalization
-├── PID.*               // PID controller
-├── SpeedCtrl.*         // Motor and speed management
-├── UI.*                // 3D visualization (Supervisor labels)
-├── State.*             // Robot states & stop reasons
-├── Config.hpp          // Global configuration & constants
+- Lambo_FSM001.cpp    // State machine and orchestration (Main)
+- Sensors.*           // Sensor handling & normalization
+- PID.*               // PID controller
+- SpeedCtrl.*         // Motor and speed management
+- UI.*                // 3D visualization (Supervisor labels)
+- State.*             // Robot states & stop reasons
+- Config.hpp          // Global configuration & constants
+
+![Structure](docs/images/Structure.png)
 
 ---
 
