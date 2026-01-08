@@ -1,10 +1,10 @@
-﻿# Autonomous Line-Following Robot Controller (Webots – C++)
+﻿# 🏎️ Autonomous Line-Following Robot Controller (Webots – C++)
 
 *Based on the Open Lamborghino platform*
 
 ---
 
-## Project Overview
+## 📌 Project Overview
 
 This project implements an **advanced autonomous line-following robot controller** written in **C++ for Webots**, targeting a robotracer-style differential drive robot.
 
@@ -54,6 +54,14 @@ Each component has a specific responsibility, allowing clean interaction between
 - **Furnished Group**
   A set of desks, chairs, and computers that enrich the indoor scene and provide a realistic context.
 
+```
+World
+├── Environment (Sport Center, Furniture)
+├── Visualization (Follower_cam Robot)
+├── Timing & Events (Start_goal Robot)
+└── Autonomous Control (Lamborghino Robot)
+```
+
 ---
 
 ### Robots in the World
@@ -73,13 +81,6 @@ Each component has a specific responsibility, allowing clean interaction between
   - Initial track learning
   - Optimized speed control on subsequent runs
 
-```
-World
-- Environment (Sport Center, Furniture)
-- Visualization (Follower_cam Robot)
-- Timing & Events (Start_goal Robot)
-- Autonomous Control (Lamborghino Robot)
-```
 ---
 
 ## ⚠️ Model & Physical Limitations
@@ -101,12 +102,12 @@ These constraints closely reflect the behavior of the **real Open Lamborghino pl
 ---
 
 ## 📊 Performance Summary
-
-- **Track length:** 36.8 m
-- **Curvature marks:** 96
-- **Initial lap time:** 34.8 s
-- **Optimized lap time:** 29.4 s
-
+```
+├── Track length:          36.8 m
+├── Curvature marks:         96
+├── Initial lap time:    34.752 s
+├── Optimized lap time:  29.488 s
+```
 Performance depends on simulation parameters and host machine capabilities.
 
 ---
@@ -116,13 +117,13 @@ Performance depends on simulation parameters and host machine capabilities.
 The controller is fully modular and split into multiple files:
 
 ```
-- Lambo_FSM001.cpp    // State machine and orchestration (Main)
-- Sensors.*           // Sensor handling & normalization
-- PID.*               // PID controller
-- SpeedCtrl.*         // Motor and speed management
-- UI.*                // 3D visualization (Supervisor labels)
-- State.*             // Robot states & stop reasons
-- Config.hpp          // Global configuration & constants
+├── Lambo_FSM001.cpp    // State machine and orchestration (Main)
+├── Sensors.*           // Sensor handling & normalization
+├── PID.*               // PID controller
+├── SpeedCtrl.*         // Motor and speed management
+├── UI.*                // 3D visualization (Supervisor labels)
+├── State.*             // Robot states & stop reasons
+├── Config.hpp          // Global configuration & constants
 ```
 
 ![Structure](docs/images/Structure.png)
@@ -182,6 +183,11 @@ Please refer to **CONTRIBUTING.md** before submitting changes.
 
 ![Simulation Environment Detail](docs/images/Simulation_Environment_Detail.png)
 *Indoor sports center environment with furnished elements used to provide a realistic simulation context.*
+
+
+[![Alt text](https://img.youtube.com/vi/fQJVO7WQYRE/0.jpg)](https://www.youtube.com/watch?v=fQJVO7WQYRE)
+
+*Complete video showing the three states from calibration, initial run and optimized run.*
 
 ---
 
