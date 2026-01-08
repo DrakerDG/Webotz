@@ -244,7 +244,7 @@ Any contribution should align with these principles.
 
 ## 🔗 External Sources
 
-- **Webots Simjulator**
+- **Webots Simulator**
   https://cyberbotics.com/
 
 - **Open Lamborghino**
