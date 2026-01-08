@@ -1,0 +1,12 @@
+# Blender 5.0.0 MTL File: 'lamborghino.blend'
+# www.blender.org
+
+newmtl TB6612FNG
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd /home/drakerdg/WebotsProjects/FLF_robot/worlds/obj/Lamboghino/docs/TB6612FNG/TB6612FNG.jpg
