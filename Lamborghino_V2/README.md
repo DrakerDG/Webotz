@@ -73,12 +73,13 @@ Each component has a specific responsibility, allowing clean interaction between
   - Initial track learning
   - Optimized speed control on subsequent runs
 
+```
 World
 - Environment (Sport Center, Furniture)
 - Visualization (Follower_cam Robot)
 - Timing & Events (Start_goal Robot)
 - Autonomous Control (Lamborghino Robot)
-
+```
 ---
 
 ## ⚠️ Model & Physical Limitations
@@ -114,6 +115,7 @@ Performance depends on simulation parameters and host machine capabilities.
 
 The controller is fully modular and split into multiple files:
 
+```
 - Lambo_FSM001.cpp    // State machine and orchestration (Main)
 - Sensors.*           // Sensor handling & normalization
 - PID.*               // PID controller
@@ -121,6 +123,7 @@ The controller is fully modular and split into multiple files:
 - UI.*                // 3D visualization (Supervisor labels)
 - State.*             // Robot states & stop reasons
 - Config.hpp          // Global configuration & constants
+```
 
 ![Structure](docs/images/Structure.png)
 
@@ -138,6 +141,7 @@ No manual tuning is required for basic operation.
 ---
 
 ## 💻💾 Hardware and software equipment used
+```
 - Host: Victus by HP Laptop 16-d0xxx
 - CPU: 11th Gen Intel i7-11800H (16) @ 4.600GHz
 - GPU: NVIDIA GeForce RTX 3060 Mobile / Max-Q
@@ -146,7 +150,7 @@ No manual tuning is required for basic operation.
 - Simulator: Webots
 - 3D design: Blender
 - Textures: Inkscape & Gimp
-
+```
 ---
 
 ## 💬 Feedback & Contributions
