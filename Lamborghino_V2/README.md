@@ -13,6 +13,10 @@ The controller includes sensor calibration, PID-based steering, track learning, 
 The current optimized run improves performance by using conservative speed adaptation and smooth acceleration.
 Further improvements are expected once **full curvature-based speed profiling** is enabled.
 
+![World Overview](docs/images/Lamborghino01.gif)
+
+![World Overview](docs/images/Lamborghino02.gif)
+
 ---
 
 ## 🚧 Current Implementation Status
