@@ -15,8 +15,6 @@ Further improvements are expected once **full curvature-based speed profiling** 
 
 ![World Overview](docs/images/Lamborghino01.gif)
 
-![World Overview](docs/images/Lamborghino02.gif)
-
 ---
 
 ## 🚧 Current Implementation Status
@@ -33,6 +31,8 @@ Further improvements are expected once **full curvature-based speed profiling** 
 - Adaptive PID gains per track segment
 
 The main objective is to **minimize lap time while maintaining reliable line tracking**, taking into account both physical and simulation constraints.
+
+![World Overview](docs/images/Lamborghino02.gif)
 
 ---
 
