@@ -67,7 +67,7 @@ while robot.step(timestep) != -1:
     left_obs  = values[0] + values[1]
     right_obs = values[3] + values[4]
 
-    # detectar bloqueo
+
     if front_obs > 2000 and abs(left_obs - right_obs) < 300:
 
         if escape_timer == 0:
