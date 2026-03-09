@@ -1,0 +1,54 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/mobsya/thymio/protos/Thymio2.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
+
+WorldInfo {
+  basicTimeStep 10
+  contactProperties [
+    ContactProperties {
+      material2 "thymio body"
+      coulombFriction [
+        0.7
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.36034827236271066 -0.3532138219432558 -0.8633592060049209 4.546229100921504
+  position -0.13592319639150455 -1.2248186530574048 1.0689260281697084
+  follow "Thymio II"
+  followSmoothness 0.005
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 100 100
+  tileSize 4 4
+  appearance Parquetry {
+    type "light strip"
+  }
+}
+Robot {
+  name "master"
+  controller "master_ctrl"
+  supervisor TRUE
+}
+DEF Thymio2 Thymio2 {
+  rotation 0 0 1 3.14159
+  controller "Thymio2_ctrl"
+  bodySlot [
+    Camera {
+      translation 0 0 0.07
+      width 300
+      height 180
+    }
+    Compass {
+    }
+  ]
+}
