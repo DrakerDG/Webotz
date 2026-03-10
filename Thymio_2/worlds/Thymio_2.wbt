@@ -4,7 +4,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/mobsya/thymio/protos/Thymio2.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Pavement.proto"
 
 WorldInfo {
   basicTimeStep 10
@@ -18,8 +18,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.36034827236271066 -0.3532138219432558 -0.8633592060049209 4.546229100921504
-  position -0.13592319639150455 -1.2248186530574048 1.0689260281697084
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position -0.01353959870233007 -0.0018936186672475158 3.416190731624455
   follow "Thymio II"
   followSmoothness 0.005
 }
@@ -28,13 +28,37 @@ TexturedBackground {
 TexturedBackgroundLight {
 }
 Floor {
-  size 100 100
-  tileSize 4 4
-  appearance Parquetry {
-    type "light strip"
+  size 1000 1000
+  tileSize 1 1
+  appearance Pavement {
+    type "slate"
   }
 }
 Robot {
+  children [
+    DistanceSensor {
+      translation -4 -1 0.02
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.141176 0.121569 0.192157
+            }
+          }
+          geometry Box {
+            size 0.05 0.03 0.04
+          }
+        }
+      ]
+      name "goal"
+      lookupTable [
+        0 0 0
+        2 1000 0
+      ]
+      type "infra-red"
+    }
+  ]
   name "master"
   controller "master_ctrl"
   supervisor TRUE
