@@ -44,6 +44,12 @@ K_avoid = 3 #0.002
 
 escape_direction = 0
 escape_timer = 0
+escape_factor = 200
+max_timer = 40
+max_front = 500
+max_delta = 2000
+min_delta = 1500
+
 
 def get_heading():
     v = compass.getValues()
@@ -63,20 +69,22 @@ while robot.step(timestep) != -1:
     # sensors
     values = [s.getValue() for s in sensors]
     
-    front_obs = values[0] + values[1] + values[2] + values[3] + values[4]
+    front_obs = values[1] + values[2] + values[3]
     left_obs  = values[0] + values[1]
     right_obs = values[3] + values[4]
 
-
-    if front_obs > 2000 and abs(left_obs - right_obs) < 300:
+    # print(f"front_obs: {front_obs: 6.2f}   delta: {abs(left_obs - right_obs): 8.2f} ")
+    
+    # Detects possible blockages or obstacles on both sides
+    if (front_obs > max_front and abs(left_obs - right_obs) < max_delta) or front_obs == 0 and abs(left_obs - right_obs) > min_delta:
 
         if escape_timer == 0:
             import random
             escape_direction = random.choice([-1,1])
-            escape_timer = 60
+            escape_timer = max_timer
     
     if escape_timer > 0:
-        avoidance = escape_direction * 400
+        avoidance = escape_direction * escape_factor
         escape_timer -= 1
     else:
         avoidance = K_avoid * (left_obs - right_obs)
@@ -92,5 +100,3 @@ while robot.step(timestep) != -1:
     rightMotor.setVelocity(vel_right)
 
     pass
-
-# Enter here exit cleanup code.
