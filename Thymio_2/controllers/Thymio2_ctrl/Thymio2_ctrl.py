@@ -39,7 +39,7 @@ camera.enable(timestep)
 
 # parameters
 forward = MAX_VEL
-K_heading = 3 #0.05
+K_heading = 4 #0.05
 K_avoid = 3 #0.002
 
 escape_direction = 0
@@ -53,7 +53,7 @@ min_delta = 1500
 
 def get_heading():
     v = compass.getValues()
-    angle = math.atan2(v[0], v[2])
+    angle = math.atan2(v[1], v[0])
     return angle
 
 desired_heading = 0.0  # north
@@ -73,7 +73,8 @@ while robot.step(timestep) != -1:
     left_obs  = values[0] + values[1]
     right_obs = values[3] + values[4]
 
-    # print(f"front_obs: {front_obs: 6.2f}   delta: {abs(left_obs - right_obs): 8.2f} ")
+    # print debug
+    # print(f"front_obs: {front_obs: 10.2f}    delta: {abs(left_obs - right_obs): 10.2f} ")
     
     # Detects possible blockages or obstacles on both sides
     if (front_obs > max_front and abs(left_obs - right_obs) < max_delta) or front_obs == 0 and abs(left_obs - right_obs) > min_delta:
@@ -92,9 +93,13 @@ while robot.step(timestep) != -1:
     # velocityes
     vel_left  = forward + heading_correction + avoidance
     vel_right = forward - heading_correction - avoidance
+    
 
     vel_left  = max(min(vel_left, MAX_VEL), -MAX_VEL)
     vel_right = max(min(vel_right, MAX_VEL), -MAX_VEL)
+    
+    # print debug
+    # print(f"left: {vel_left: 8.2f}   right: {vel_right: 8.2f}   heading: {heading: 8.2f}")
 
     leftMotor.setVelocity(vel_left)
     rightMotor.setVelocity(vel_right)
