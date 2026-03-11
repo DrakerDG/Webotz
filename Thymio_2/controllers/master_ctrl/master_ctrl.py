@@ -1,4 +1,11 @@
-"""master_ctrl controller."""
+# master_ctrl controller
+# V2.0
+#        ____             __             ____  ______
+#       / __ \_________ _/ /_____  _____/ __ \/ ____/
+#      / / / / ___/ __ `/ //_/ _ \/ ___/ / / / / __  
+#     / /_/ / /  / /_/ / ,< /  __/ /  / /_/ / /_/ /  
+#    /_____/_/   \__,_/_/|_|\___/_/  /_____/\____/   
+#
 
 from controller import Supervisor
 import random
@@ -9,8 +16,8 @@ timestep = int(supervisor.getBasicTimeStep())
 
 # get robot
 thymio = supervisor.getFromDef("Thymio2")
-trans_field = thymio.getField("translation")
-pos = trans_field.getSFVec3f()
+thymio_field = thymio.getField("translation")
+pos = thymio_field.getSFVec3f()
 
 robot_x = pos[0]
 robot_y = pos[1]
@@ -41,20 +48,37 @@ Y_STAGES  = int(Y_DISTANCE / STEP)
 X_SAMPLES = int(NUM_OBSTACLES / Y_STAGES)
 
 robot_y = MARGIN
-z  = 0.05
-
+x = 0
+y = -20
+z = 0.05
 n = 0
 
-tmr1 = 0
-tmr2 = 0
-run  = 1
+# Test status
+RESET = 0
+RUN   = 1
+GOAL  = 2
+STOP = 3
+
+# Initial state
+state = RESET
+
+tmr0  = 0
+tmr1  = 0
+tmr2  = 0
+wait  = 8
+lapse = 0
+
+max_lapse    = 10
+best_time    = 10000
+worst_time   = 0
+running_time = 0
+average_time = 0
+
 
 
 for i in range(Y_STAGES):
 
     for j in range(X_SAMPLES):
-        x = robot_x + random.uniform(-X_RAND, X_RAND)
-        y = robot_y + STEP * i + random.uniform(-Y_RAND, Y_RAND)
             
         # create obstacles
         shape = random.choice(["box","cylinder"])
@@ -63,7 +87,7 @@ for i in range(Y_STAGES):
         if shape == "box":
             
             node = f"""
-            Solid {{
+            DEF obstacle{n} Solid {{
               translation {x} {y} {z}
               children [
                 Shape {{
@@ -87,7 +111,7 @@ for i in range(Y_STAGES):
         else:
     
             node = f"""
-            Solid {{
+            DEF obstacle{n} Solid {{
               translation {x} {y} {z}
               children [
                 Shape {{
@@ -113,6 +137,7 @@ for i in range(Y_STAGES):
     
         children.importMFNodeFromString(-1,node)
         
+        y += 0.2
         n += 1
 
 # hour:minutes:seconds.thousandths
@@ -124,30 +149,75 @@ def hms(sec):
     tm = f'{h:02d}:{m:02d}:{s:02d}.{int(c):03d}'
     return tm
 
+def random_position():
+    
+    n = 0
+    for i in range(Y_STAGES):
+    
+        for j in range(X_SAMPLES):
+            x = robot_x + random.uniform(-X_RAND, X_RAND)
+            y = robot_y + STEP * i + random.uniform(-Y_RAND, Y_RAND)
+
+            name = f'obstacle{n:d}'
+            obstacle = supervisor.getFromDef(name)
+            obstacle_field = obstacle.getField('translation')
+            obstacle_field.setSFVec3f([x, y, z])
+            n += 1
+
 # print the status in simulatoin screen
 def printStatus():
-    global tmr0
     global tmr1
     
-    if run == 1:
-        tmr0 = supervisor.getTime()
-        strP = hms(tmr0)
-        strP = f'Lap Time:   {strP:s}'
-        supervisor.setLabel(0, strP, 0, 0.89, 0.1, 0x00FF00, 0, 'Lucida Console')
+    if state == RUN:
+        strP = hms(tmr1)
+        strP = f'Lap Time{lapse:3d}:   {strP:s}'
+           
+        supervisor.setLabel(0, strP, 0, 0.84, 0.07, 0x00FF00, 0, 'Lucida Console')
 
-    elif run == 0:
-        tmr1 = supervisor.getTime() - tmr0
-        if tmr1 > 6:
-            run == 1
-            supervisor.simulationSetMode(0)
+    elif state == RESET:
+        strP = hms(best_time)
+        strP = f'       Best:   {strP:s}'
+        supervisor.setLabel(1, strP, 0, 0.88, 0.07, 0x00FF00, 0, 'Lucida Console')
+        strP = hms(worst_time)
+        strP = f'      Worst:   {strP:s}'
+        supervisor.setLabel(2, strP, 0, 0.92, 0.07, 0x00FF00, 0, 'Lucida Console')
+        strP = hms(average_time)
+        strP = f'    Average:   {strP:s}'
+        supervisor.setLabel(3, strP, 0, 0.96, 0.07, 0x00FF00, 0, 'Lucida Console')
+
 
 # Main loop:    
 while supervisor.step(timestep) != -1:
 
-    goal_value = goal.getValue()
-    
-    if goal_value < 1000: run = 0
-    
+    if state == RESET:
+        thymio_field.setSFVec3f([0, 0, 0])
+        random_position()
+        tmr0 = supervisor.getTime()
+        state = RUN
+        lapse +=1
+        
+    elif state == RUN:
+        goal_value = goal.getValue()
+        tmr1 = supervisor.getTime() - tmr0
+        if goal_value < 1000:
+            tmr0 = supervisor.getTime()
+            if tmr1 < best_time :  best_time = tmr1
+            if tmr1 > worst_time: worst_time = tmr1
+            running_time += tmr1
+            average_time = running_time / lapse
+            state = GOAL    
+
+    elif state == GOAL:
+        tmr2 = supervisor.getTime() - tmr0
+        if tmr2 > wait:
+            if lapse < max_lapse:
+                state = RESET
+            else:
+                state = STOP
+
+    elif state == STOP:
+        supervisor.simulationSetMode(0)
+        
     printStatus()
     
     pass
