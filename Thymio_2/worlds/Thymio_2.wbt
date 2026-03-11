@@ -18,8 +18,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
-  position -0.01353959870233007 -0.0018936186672475158 3.416190731624455
+  orientation -0.0003959894269547314 0.9999994061365074 0.0010153418173823633 0.750799560703076
+  position -2.1735026768966876 0.6615076712337282 1.9647034808587411
   follow "Thymio II"
   followSmoothness 0.005
 }
@@ -37,8 +37,7 @@ Floor {
 Robot {
   children [
     DistanceSensor {
-      translation -4 -1 0.02
-      rotation 0 0 1 1.5708
+      translation -1.5 4.4 0.02
       children [
         Shape {
           appearance Appearance {
@@ -54,7 +53,7 @@ Robot {
       name "goal"
       lookupTable [
         0 0 0
-        2 1000 0
+        3 1000 0
       ]
       type "infra-red"
     }
@@ -64,7 +63,7 @@ Robot {
   supervisor TRUE
 }
 DEF Thymio2 Thymio2 {
-  rotation 0 0 1 3.14159
+  rotation 0 0 1 1.5708
   controller "Thymio2_ctrl"
   bodySlot [
     Camera {
