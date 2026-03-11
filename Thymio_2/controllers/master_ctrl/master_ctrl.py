@@ -31,16 +31,16 @@ colors = [
 
 # parameters
 NUM_OBSTACLES =  20
-X_DISTANCE    = 4.0
+Y_DISTANCE    = 4.0
 STEP          = 0.6
-X_RAND        = 0.3
-Y_RAND        = 0.6
-MARGIN        = 0.4
+X_RAND        = 0.6
+Y_RAND        = 0.3
+MARGIN        = 0.6
 
-X_STAGES  = int(X_DISTANCE / STEP)
-Y_SAMPLES = int(NUM_OBSTACLES / X_STAGES)
+Y_STAGES  = int(Y_DISTANCE / STEP)
+X_SAMPLES = int(NUM_OBSTACLES / Y_STAGES)
 
-robot_x -= MARGIN
+robot_y = MARGIN
 z  = 0.05
 
 n = 0
@@ -50,12 +50,12 @@ tmr2 = 0
 run  = 1
 
 
-for i in range(X_STAGES):
+for i in range(Y_STAGES):
 
-    for j in range(Y_SAMPLES):
-        x = robot_x - STEP * i + random.uniform(-X_RAND, X_RAND)
-        y = robot_y + random.uniform(-Y_RAND, Y_RAND)
-    
+    for j in range(X_SAMPLES):
+        x = robot_x + random.uniform(-X_RAND, X_RAND)
+        y = robot_y + STEP * i + random.uniform(-Y_RAND, Y_RAND)
+            
         # create obstacles
         shape = random.choice(["box","cylinder"])
         color = random.choice(colors)
@@ -151,3 +151,4 @@ while supervisor.step(timestep) != -1:
     printStatus()
     
     pass
+
