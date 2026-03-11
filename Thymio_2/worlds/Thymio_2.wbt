@@ -70,6 +70,7 @@ DEF Thymio2 Thymio2 {
       translation 0 0 0.07
       width 300
       height 180
+      antiAliasing TRUE
     }
     Compass {
     }
