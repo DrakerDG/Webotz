@@ -1,4 +1,11 @@
-"""Thymio2_ctrl controller."""
+# Thymio2_ctrl controller
+# V2.0
+#        ____             __             ____  ______
+#       / __ \_________ _/ /_____  _____/ __ \/ ____/
+#      / / / / ___/ __ `/ //_/ _ \/ ___/ / / / / __  
+#     / /_/ / /  / /_/ / ,< /  __/ /  / /_/ / /_/ /  
+#    /_____/_/   \__,_/_/|_|\___/_/  /_____/\____/   
+#
 
 from controller import Robot
 import math
@@ -73,8 +80,8 @@ while robot.step(timestep) != -1:
     left_obs  = values[0] + values[1]
     right_obs = values[3] + values[4]
 
-    # print debug
-    # print(f"front_obs: {front_obs: 10.2f}    delta: {abs(left_obs - right_obs): 10.2f} ")
+    # print sensor values debug
+    #print(f"front_obs: {front_obs: 10.2f}    delta: {abs(left_obs - right_obs): 10.2f} ")
     
     # Detects possible blockages or obstacles on both sides
     if (front_obs > max_front and abs(left_obs - right_obs) < max_delta) or front_obs == 0 and abs(left_obs - right_obs) > min_delta:
@@ -98,8 +105,8 @@ while robot.step(timestep) != -1:
     vel_left  = max(min(vel_left, MAX_VEL), -MAX_VEL)
     vel_right = max(min(vel_right, MAX_VEL), -MAX_VEL)
     
-    # print debug
-    # print(f"left: {vel_left: 8.2f}   right: {vel_right: 8.2f}   heading: {heading: 8.2f}")
+    # print speed values debug
+    #print(f"left: {vel_left: 8.2f}   right: {vel_right: 8.2f}   heading: {heading: 8.2f}")
 
     leftMotor.setVelocity(vel_left)
     rightMotor.setVelocity(vel_right)
