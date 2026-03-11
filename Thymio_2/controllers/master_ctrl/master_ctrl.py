@@ -174,7 +174,7 @@ def printStatus():
            
         supervisor.setLabel(0, strP, 0, 0.84, 0.07, 0x00FF00, 0, 'Lucida Console')
 
-    elif state == RESET:
+    elif state == GOAL:
         strP = hms(best_time)
         strP = f'       Best:   {strP:s}'
         supervisor.setLabel(1, strP, 0, 0.88, 0.07, 0x00FF00, 0, 'Lucida Console')
