@@ -191,6 +191,7 @@ while supervisor.step(timestep) != -1:
 
     if state == RESET:
         thymio_field.setSFVec3f([0, 0, 0])
+        thymio.resetPhysics()
         random_position()
         tmr0 = supervisor.getTime()
         state = RUN
